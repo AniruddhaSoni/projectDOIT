@@ -34,7 +34,7 @@ function App() {
   return (
     <Container className="pt-4 pb-4">
       <Multistep
-        activeStep={1}
+        activeStep={0}
         showNavigation={true}
         steps={steps}
         prevStyle={prevStyle}
