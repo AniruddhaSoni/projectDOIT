@@ -89,7 +89,7 @@ export default function StepOne() {
         <Form.Group className="mb-3" controlId="secondaryEdu">
           <Form.Label>
             15. परिवार में माध्यमिक शिक्षा (कक्षा 9 से 10) प्राप्त सदस्यों का
-            विवरण{" "}
+            विवरण
           </Form.Label>
           <Form.Control
             type="text"
