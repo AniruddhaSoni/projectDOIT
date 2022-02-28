@@ -1,6 +1,9 @@
 import { Container } from "react-bootstrap";
 import Multistep from "react-multistep";
+import StepEight from "./components/StepEight";
+import StepNine from "./components/StepNine";
 import StepOne from "./components/StepOne";
+import StepTen from "./components/StepTen";
 import StepTwo from "./components/StepTwo";
 
 function App() {
@@ -12,9 +15,9 @@ function App() {
     { name: "StepFive", component: <h1>Hello4</h1> },
     { name: "StepSix", component: <h1>Hello4</h1> },
     { name: "StepSeven", component: <h1>Hello4</h1> },
-    { name: "StepEight", component: <h1>Hello4</h1> },
-    { name: "StepNine", component: <h1>Hello4</h1> },
-    { name: "StepTen", component: <h1>Hello4</h1> },
+    { name: "StepEight", component: <StepEight /> },
+    { name: "StepNine", component: <StepNine /> },
+    { name: "StepTen", component: <StepTen /> },
     { name: "StepEleven", component: <h1>Hello4</h1> },
     { name: "StepTwelve", component: <h1>Hello4</h1> },
   ];
