@@ -70,6 +70,10 @@ export default function StepEleven() {
               7. मुख्यमंत्री सहायता कोष/ एसडीआरएफ सहायता का प्रकरण पेण्डिंग है
               तो उसका विवरण
             </h4>
+            <Stack direction="horizontal" gap={4}>
+              <Form.Check type="radio" id="radioYes" label="YES" />
+              <Form.Check type="radio" id="radioNO" label="NO" />
+            </Stack>
             <Row>
               <Col>
                 <Form.Control placeholder="विवरण"></Form.Control>
