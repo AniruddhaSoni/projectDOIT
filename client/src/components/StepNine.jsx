@@ -3,7 +3,7 @@ import { Container, Form, Row, Col, Stack } from "react-bootstrap";
 export default function StepNine() {
   return (
     <Container>
-      <h1>पशुपालन विभाग -</h1>
+      <h1>9. पशुपालन विभाग -</h1>
       <Form className="my-4">
         <Stack gap={3}>
           <Row>

@@ -1,6 +1,7 @@
 import { Container } from "react-bootstrap";
 import Multistep from "react-multistep";
 import StepEight from "./components/StepEight";
+import StepEleven from "./components/StepEleven";
 import StepFive from "./components/StepFive";
 import StepFour from "./components/StepFour";
 import StepNine from "./components/StepNine";
@@ -8,7 +9,9 @@ import StepOne from "./components/StepOne";
 import StepSeven from "./components/StepSeven";
 import StepSix from "./components/StepSix";
 import StepTen from "./components/StepTen";
+import StepThirteen from "./components/StepThirteen";
 import StepThree from "./components/StepThree";
+import StepTwelve from "./components/StepTwelve";
 import StepTwo from "./components/StepTwo";
 
 function App() {
@@ -23,8 +26,9 @@ function App() {
     { name: "StepEight", component: <StepEight /> },
     { name: "StepNine", component: <StepNine /> },
     { name: "StepTen", component: <StepTen /> },
-    { name: "StepEleven", component: <h1>Hello4</h1> },
-    { name: "StepTwelve", component: <h1>Hello4</h1> },
+    { name: "StepEleven", component: <StepEleven /> },
+    { name: "StepTwelve", component: <StepTwelve /> },
+    { name: "StepThirteen", component: <StepThirteen /> },
   ];
 
   const prevStyle = {
