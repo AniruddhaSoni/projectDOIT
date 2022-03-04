@@ -111,12 +111,10 @@ export default function StepFive() {
               </h4>
             </Col>
             <Col>
-              <Form.Control
-                placeholder="महिलाओं/ किशोरियों द्वारा सेनेटरी का उपयोग किया जाता है या नहीं
-
-
-"
-              ></Form.Control>
+              <Stack direction="horizontal" gap={4}>
+                <Form.Check type="radio" id="radioYes" label="YES" />
+                <Form.Check type="radio" id="radioNO" label="NO" />
+              </Stack>
             </Col>
           </Row>
         </Stack>

@@ -20,7 +20,10 @@ export default function StepThree() {
               <h4>2. प्रधानमंत्री आवास योजना के तहत लाभान्वित है या नहीं</h4>
             </Col>
             <Col>
-              <Form.Control placeholder="प्रधानमंत्री आवास योजना के तहत लाभान्वित है या नहीं"></Form.Control>
+              <Stack direction="horizontal" gap={4}>
+                <Form.Check type="radio" id="radioYes" label="YES" />
+                <Form.Check type="radio" id="radioNO" label="NO" />
+              </Stack>
             </Col>
           </Row>
           <Row>
@@ -28,7 +31,10 @@ export default function StepThree() {
               <h4>3. परिवार के पास जॉबकार्ड है या नहीं</h4>
             </Col>
             <Col>
-              <Form.Control placeholder="परिवार के पास जॉबकार्ड है या नहीं"></Form.Control>
+              <Stack direction="horizontal" gap={4}>
+                <Form.Check type="radio" id="radioYes" label="YES" />
+                <Form.Check type="radio" id="radioNO" label="NO" />
+              </Stack>
             </Col>
           </Row>
           <Row>
@@ -36,7 +42,10 @@ export default function StepThree() {
               <h4>4. राशन कार्ड उपलब्ध है या नहीं</h4>
             </Col>
             <Col>
-              <Form.Control placeholder="राशन कार्ड उपलब्ध है या नहीं"></Form.Control>
+              <Stack direction="horizontal" gap={4}>
+                <Form.Check type="radio" id="radioYes" label="YES" />
+                <Form.Check type="radio" id="radioNO" label="NO" />
+              </Stack>
             </Col>
           </Row>
           <Row>
