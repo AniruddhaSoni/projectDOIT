@@ -3,7 +3,7 @@ import { Container, Form, Row, Col, Stack, Button } from "react-bootstrap";
 export default function StepTen() {
   return (
     <Container>
-      <h1>शिक्षा विभाग-</h1>
+      <h1>10. शिक्षा विभाग-</h1>
       <Form className="my-4">
         <Stack gap={3}>
           <Row>
@@ -81,7 +81,7 @@ export default function StepTen() {
                 <Form.Control placeholder="सेवा का नाम"></Form.Control>
               </Col>
             </Row>
-            <Button size="sm" variant="dark" className="my-2">
+            <Button size="sm" variant="dark" className="my-2 w-25 py-2 mx-2">
               Add more
             </Button>
           </Row>
