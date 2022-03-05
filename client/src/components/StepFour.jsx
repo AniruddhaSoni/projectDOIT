@@ -12,10 +12,10 @@ export default function StepFour() {
               <h4>1. परिवार राष्ट्रीय खाद्य सुरक्षा में चयनित है या नहीं</h4>
             </Col>
             <Col>
-              <Form.Control
-                placeholder="परिवार राष्ट्रीय खाद्य सुरक्षा में चयनित है या नहीं
-"
-              ></Form.Control>
+              <Stack direction="horizontal" gap={4}>
+                <Form.Check type="radio" id="radioYes" label="YES" />
+                <Form.Check type="radio" id="radioNO" label="NO" />
+              </Stack>
             </Col>
           </Row>
           <Row>
@@ -33,7 +33,10 @@ export default function StepFour() {
               </h4>
             </Col>
             <Col>
-              <Form.Control placeholder="क्या परिवार को नियमित खाद्य सामग्रीप्राप्तहो रही है या नहीं"></Form.Control>
+              <Stack direction="horizontal" gap={4}>
+                <Form.Check type="radio" id="radioYes" label="YES" />
+                <Form.Check type="radio" id="radioNO" label="NO" />
+              </Stack>
             </Col>
           </Row>
           <Row>
@@ -55,10 +58,10 @@ export default function StepFour() {
               </h4>
             </Col>
             <Col>
-              <Form.Control
-                placeholder="टी.ए.डी. द्वारा वितरित किये जा रहे सहरिया किट मिल रहे है या नहीं
-"
-              ></Form.Control>
+              <Stack direction="horizontal" gap={4}>
+                <Form.Check type="radio" id="radioYes" label="YES" />
+                <Form.Check type="radio" id="radioNO" label="NO" />
+              </Stack>
             </Col>
           </Row>
         </Stack>
