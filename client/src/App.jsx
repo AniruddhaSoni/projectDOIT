@@ -1,5 +1,6 @@
 import { Container } from "react-bootstrap";
 import Multistep from "react-multistep";
+import LocalContextProvider from "./Contexts/provider";
 import StepEight from "./components/StepEight";
 import StepEleven from "./components/StepEleven";
 import StepFive from "./components/StepFive";
@@ -44,15 +45,17 @@ function App() {
   };
 
   return (
-    <Container className="pt-4 pb-4">
-      <Multistep
-        activeStep={0}
-        showNavigation={true}
-        steps={steps}
-        prevStyle={prevStyle}
-        nextStyle={nextStyle}
-      />
-    </Container>
+    <LocalContextProvider>
+      <Container className="pt-4 pb-4">
+        <Multistep
+          activeStep={0}
+          showNavigation={true}
+          steps={steps}
+          prevStyle={prevStyle}
+          nextStyle={nextStyle}
+        />
+      </Container>
+    </LocalContextProvider>
   );
 }
 
