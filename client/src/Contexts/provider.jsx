@@ -7,6 +7,7 @@ const localStorageData = JSON.parse(
 );
 
 const initialData = {
+  // StepOne
   familyDetail: {
     districtName: "",
     blockName: "",
@@ -29,6 +30,42 @@ const initialData = {
     migration: false,
     migrationDetails: [""],
   },
+
+  //StepEight
+  agricultureDepartment: {
+    totalMinikits: "",
+    fasalInsuranceAdvantage: false,
+    dripEquipmentGrant: false,
+    krishakSathiYojana: false,
+    subsidyOnAgricultureMachinery: false,
+    plantProtectionGrant: false,
+    krishiVigyanScholarship: false,
+    pmSammanNidhiYojana: false,
+    specialDetails: "",
+  },
+
+  // StepNine
+  animalHusbandryDepartment: {
+    totalAnimals: "",
+    MilchAnimals: "",
+    NonMilchAnimals: "",
+    artificalInseminationAnimals: "",
+    underVaccinationPlanAnimals: "",
+    specialDetails: "",
+  },
+
+  // StepTen
+  educationDepartment: {
+    inPrimary: "",
+    inHigherPrimary: "",
+    inSecondary: "",
+    inHigherSecondary: "",
+    inPMTOrIIT: "",
+    inGraduation: "",
+    scholar: "",
+    inGovtJob: [],
+    inOtherYojana: "",
+  },
 };
 
 const initialState = localStorageData ? localStorageData : initialData;
@@ -44,6 +81,34 @@ const reducer = (state, action) => {
         ...state,
         familyDetail: action.payload,
       };
+    case "handleStepEight":
+      localStorage.setItem(
+        process.env.REACT_APP_LOCAL_STORAGE_KEY,
+        JSON.stringify({ ...state, agricultureDepartment: action.payload })
+      );
+      return {
+        ...state,
+        agricultureDepartment: action.payload,
+      };
+    case "handleStepNine":
+      localStorage.setItem(
+        process.env.REACT_APP_LOCAL_STORAGE_KEY,
+        JSON.stringify({ ...state, animalHusbandryDepartment: action.payload })
+      );
+      return {
+        ...state,
+        animalHusbandryDepartment: action.payload,
+      };
+    case "handleStepTen":
+      localStorage.setItem(
+        process.env.REACT_APP_LOCAL_STORAGE_KEY,
+        JSON.stringify({ ...state, educationDepartment: action.payload })
+      );
+      return {
+        ...state,
+        educationDepartment: action.payload,
+      };
+
     default:
       return state;
   }
