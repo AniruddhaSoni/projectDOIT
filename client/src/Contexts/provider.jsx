@@ -2,7 +2,11 @@ import { createContext, useReducer } from "react";
 
 export const LocalContext = createContext();
 
-const initialState = {
+const localStorageData = JSON.parse(
+  localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE_KEY)
+);
+
+const initialData = {
   familyDetail: {
     districtName: "",
     blockName: "",
@@ -27,9 +31,15 @@ const initialState = {
   },
 };
 
+const initialState = localStorageData ? localStorageData : initialData;
+
 const reducer = (state, action) => {
   switch (action.type) {
     case "handleStepOne":
+      localStorage.setItem(
+        process.env.REACT_APP_LOCAL_STORAGE_KEY,
+        JSON.stringify({ ...state, familyDetail: action.payload })
+      );
       return {
         ...state,
         familyDetail: action.payload,

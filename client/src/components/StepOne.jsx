@@ -5,7 +5,6 @@ import { useContext } from "react";
 export default function StepOne() {
   const [state, dispatch] = useContext(LocalContext);
   const { familyDetail } = state;
-  console.log(familyDetail);
 
   const handleFieldChange = (e, index) => {
     const { name, value, type } = e.target;
@@ -204,7 +203,7 @@ export default function StepOne() {
             value={familyDetail.secondaryEducation}
             onChange={handleFieldChange}
             placeholder="परिवार में माध्यमिक शिक्षा (कक्षा 9 से 10)  प्राप्त सदस्यों का विवरण"
-            name="secondaryEudcation"
+            name="secondaryEducation"
           ></Form.Control>
         </Form.Group>
         <Form.Group className="mb-3" controlId="higherEducation">
