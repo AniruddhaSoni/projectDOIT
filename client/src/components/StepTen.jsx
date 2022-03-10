@@ -33,7 +33,31 @@ export default function StepTen() {
     });
   };
 
-  const Add = () => {};
+  const handleAdd = (e) => {
+    const dataAttri = e.target.getAttribute("data-property");
+    const values = { ...educationDepartment };
+
+    values[dataAttri].push({ memberName: "", serviceName: "" });
+    dispatch({
+      type: "handleStepTen",
+      payload: values,
+    });
+  };
+
+  const handleRemove = (e) => {
+    const dataAttri = e.target.getAttribute("data-property");
+    const values = { ...educationDepartment };
+
+    if (values[dataAttri].length > 0) {
+      values[dataAttri].pop();
+    } else {
+      alert("Nothing to remove");
+    }
+    dispatch({
+      type: "handleStepTen",
+      payload: values,
+    });
+  };
   return (
     <Container>
       <h1>10. शिक्षा विभाग-</h1>
@@ -148,36 +172,47 @@ export default function StepTen() {
               8. यदि परिवार का कोई सदस्य राजकीय सेवा में कार्यरत है तो उसका
               विवरण
             </h4>
-            <Row>
-              <Col>
-                <Form.Control
-                  onChange={handleFieldChange}
-                  type="text"
-                  placeholder="सदस्य का नाम"
-                  name="memberName"
-                  data-property="inGovtJob"
-                  value={ele.memberName}
-                ></Form.Control>
-              </Col>
-              <Col>
-                <Form.Control
-                  onChange={handleFieldChange}
-                  type="text"
-                  placeholder="सेवा का नाम"
-                  name="serviceName"
-                  data-property="inGovtJob"
-                  value={ele.serviceName}
-                ></Form.Control>
-              </Col>
-            </Row>
-            <Stack>
-              <Button size="sm" variant="dark" className="my-2 w-25 py-2 mx-2">
+            {inGovtJob.length > 0 &&
+              inGovtJob.map((ele, index) => (
+                <Row className="my-3" key={index}>
+                  <Col>
+                    <Form.Control
+                      onChange={(e) => handleFieldChange(e, index)}
+                      type="text"
+                      placeholder="सदस्य का नाम"
+                      name="memberName"
+                      value={ele.memberName}
+                      data-property="inGovtJob"
+                    ></Form.Control>
+                  </Col>
+                  <Col>
+                    <Form.Control
+                      onChange={(e) => handleFieldChange(e, index)}
+                      type="text"
+                      placeholder="सेवा का नाम"
+                      name="serviceName"
+                      value={ele.serviceName}
+                      data-property="inGovtJob"
+                    ></Form.Control>
+                  </Col>
+                </Row>
+              ))}
+            <Stack direction="horizontal" gap={3}>
+              <Button
+                size="sm"
+                variant="dark"
+                className="my-2 w-25 py-2 mx-2"
+                data-property="inGovtJob"
+                onClick={handleAdd}
+              >
                 Add
               </Button>
               <Button
                 size="sm"
                 variant="danger"
                 className="my-2 w-25 py-2 mx-2"
+                data-property="inGovtJob"
+                onClick={handleRemove}
               >
                 Remove
               </Button>
