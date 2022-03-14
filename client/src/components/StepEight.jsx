@@ -6,6 +6,18 @@ export default function StepEight() {
   const [state, dispatch] = useContext(LocalContext);
   const { agricultureDepartment } = state;
 
+  const {
+    totalMinikits,
+    fasalInsuranceAdvantage,
+    dripEquipmentGrant,
+    krishakSathiYojana,
+    subsidyOnAgricultureMachinery,
+    plantProtectionGrant,
+    krishiVigyanScholarship,
+    pmSammanNidhiYojana,
+    specialDetails,
+  } = agricultureDepartment;
+
   const handleFieldChange = (e) => {
     const { name, value, type } = e.target;
     const values = { ...agricultureDepartment };
@@ -33,7 +45,7 @@ export default function StepEight() {
               <Form.Control
                 placeholder="परिवार को प्राप्त मिनीकिट्स की संख्या"
                 type="text"
-                value={agricultureDepartment.totalMinikits}
+                value={totalMinikits}
                 name="totalMinikits"
                 onChange={handleFieldChange}
               ></Form.Control>
@@ -54,14 +66,16 @@ export default function StepEight() {
                   id="radioYes"
                   label="YES"
                   name="fasalInsuranceAdvantage"
-                  values="yes"
+                  value="yes"
+                  defaultChecked={fasalInsuranceAdvantage ? true : false}
                 />
                 <Form.Check
                   type="radio"
                   id="radioNO"
                   label="NO"
                   name="fasalInsuranceAdvantage"
-                  values="no"
+                  value="no"
+                  defaultChecked={!fasalInsuranceAdvantage ? true : false}
                 />
               </Stack>
             </Col>
@@ -82,6 +96,7 @@ export default function StepEight() {
                   label="YES"
                   name="dripEquipmentGrant"
                   value="yes"
+                  defaultChecked={dripEquipmentGrant ? true : false}
                 />
                 <Form.Check
                   type="radio"
@@ -89,33 +104,24 @@ export default function StepEight() {
                   label="NO"
                   name="dripEquipmentGrant"
                   value="no"
+                  defaultChecked={!dripEquipmentGrant ? true : false}
                 />
               </Stack>
             </Col>
           </Row>
           <Row>
-            <h4>4. कृषक साथी योजना में यदि कभी लाभ मिला है तो विवरण</h4>
-            <Stack direction="horizontal" gap={4} onChange={handleFieldChange}>
-              <Form.Check
-                type="radio"
-                id="radioYes"
-                label="YES"
-                name="subsidyOnAgricultureMachinery"
-                value="yes"
-              />
-              <Form.Check
-                type="radio"
-                id="radioNO"
-                label="NO"
-                name="subsidyOnAgricultureMachinery"
-                value="no"
-              />
-            </Stack>
-            <Row className="mt-4 mb-2">
-              <Col>
-                <Form.Control placeholder="विवरण"></Form.Control>
-              </Col>
-            </Row>
+            <Col>
+              <h4>4. कृषक साथी योजना में यदि कभी लाभ मिला है तो विवरण</h4>
+            </Col>
+            <Col>
+              <Form.Control
+                placeholder="विवरण"
+                type="text"
+                name="krishakSathiYojana"
+                value={krishakSathiYojana}
+                onChange={handleFieldChange}
+              ></Form.Control>
+            </Col>
           </Row>
           <Row>
             <Col>
@@ -133,6 +139,7 @@ export default function StepEight() {
                   label="YES"
                   name="subsidyOnAgricultureMachinery"
                   value="yes"
+                  defaultChecked={subsidyOnAgricultureMachinery ? true : false}
                 />
                 <Form.Check
                   type="radio"
@@ -140,6 +147,7 @@ export default function StepEight() {
                   label="NO"
                   name="subsidyOnAgricultureMachinery"
                   value="no"
+                  defaultChecked={!subsidyOnAgricultureMachinery ? true : false}
                 />
               </Stack>
             </Col>
@@ -160,6 +168,7 @@ export default function StepEight() {
                   label="YES"
                   name="plantProtectionGrant"
                   value="yes"
+                  defaultChecked={plantProtectionGrant ? true : false}
                 />
                 <Form.Check
                   type="radio"
@@ -167,6 +176,7 @@ export default function StepEight() {
                   label="NO"
                   name="plantProtectionGrant"
                   value="no"
+                  defaultChecked={!plantProtectionGrant ? true : false}
                 />
               </Stack>
             </Col>
@@ -190,6 +200,7 @@ export default function StepEight() {
                   label="YES"
                   name="krishiVigyanScholarship"
                   value="yes"
+                  defaultChecked={krishiVigyanScholarship ? true : false}
                 />
                 <Form.Check
                   type="radio"
@@ -197,6 +208,7 @@ export default function StepEight() {
                   label="NO"
                   name="krishiVigyanScholarship"
                   value="no"
+                  defaultChecked={!krishiVigyanScholarship ? true : false}
                 />
               </Stack>
             </Col>
@@ -217,6 +229,7 @@ export default function StepEight() {
                   label="YES"
                   name="pmSammanNidhiYojana"
                   value="yes"
+                  defaultChecked={pmSammanNidhiYojana ? true : false}
                 />
                 <Form.Check
                   type="radio"
@@ -224,6 +237,7 @@ export default function StepEight() {
                   label="NO"
                   name="pmSammanNidhiYojana"
                   value="no"
+                  defaultChecked={!pmSammanNidhiYojana ? true : false}
                 />
               </Stack>
             </Col>
@@ -236,7 +250,7 @@ export default function StepEight() {
               <Form.Control
                 placeholder="विशेष विवरण"
                 type="text"
-                value={agricultureDepartment.specialDetails}
+                value={specialDetails}
                 name="specialDetails"
                 onChange={handleFieldChange}
               ></Form.Control>

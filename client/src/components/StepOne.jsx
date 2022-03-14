@@ -23,9 +23,10 @@ export default function StepOne() {
     });
   };
 
-  const handleAdd = () => {
+  const handleAdd = (e) => {
+    const dataAttri = e.target.getAttribute("data-property");
     const values = { ...familyDetail };
-    values["migrationDetails"].push("");
+    values[dataAttri].push({ memberName: "" });
     dispatch({
       type: "handleStepOne",
       payload: values,
@@ -34,14 +35,14 @@ export default function StepOne() {
 
   const handleRemove = () => {
     const values = { ...familyDetail };
-    if (values["migrationDetails"].length > 1) {
+    if (values["migrationDetails"].length > 0) {
       values["migrationDetails"].pop();
       dispatch({
         type: "handleStepOne",
         payload: values,
       });
     } else {
-      alert("Cannot remove it!");
+      alert("Nothing to remove");
     }
   };
 
@@ -227,6 +228,7 @@ export default function StepOne() {
               label="YES"
               name="bpl"
               value="yes"
+              defaultChecked={familyDetail.bpl ? true : false}
             />
             <Form.Check
               type="radio"
@@ -234,6 +236,7 @@ export default function StepOne() {
               label="NO"
               name="bpl"
               value="no"
+              defaultChecked={!familyDetail.bpl ? true : false}
             />
           </Stack>
         </Form.Group>
@@ -249,6 +252,7 @@ export default function StepOne() {
               onChange={handleFieldChange}
               value="yes"
               name="foodSecurity"
+              defaultChecked={familyDetail.foodSecurity ? true : false}
             />
             <Form.Check
               type="radio"
@@ -257,6 +261,7 @@ export default function StepOne() {
               name="foodSecurity"
               value="no"
               onChange={handleFieldChange}
+              defaultChecked={!familyDetail.foodSecurity ? true : false}
             />
           </Stack>
         </Form.Group>
@@ -269,13 +274,15 @@ export default function StepOne() {
               label="YES"
               name="migration"
               value="yes"
+              defaultChecked={familyDetail.migration ? true : false}
             />
             <Form.Check
               type="radio"
               id="radioNO"
               label="NO"
               name="migration"
-              values="no"
+              value="no"
+              defaultChecked={!familyDetail.migration ? true : false}
             />
           </Stack>
         </Form.Group>
@@ -286,10 +293,11 @@ export default function StepOne() {
               className="my-3"
               key={index}
               type="text"
-              value={ele}
+              value={ele.memberName}
               onChange={(e) => handleFieldChange(e, index)}
               placeholder="पलायन करने सदस्यों का विवरण"
-              name="migrationDetails"
+              name="memberName"
+              data-property="migrationDetails"
             ></Form.Control>
           ))}
           <Stack direction="horizontal" gap={3}>
@@ -297,6 +305,7 @@ export default function StepOne() {
               size="sm"
               variant="dark"
               className="my-4 w-25 py-2"
+              data-property="migrationDetails"
               onClick={handleAdd}
             >
               Add more
@@ -305,6 +314,7 @@ export default function StepOne() {
               size="sm"
               variant="danger"
               className="my-4 w-25 py-2"
+              data-property="migrationDetails"
               onClick={handleRemove}
             >
               Remove

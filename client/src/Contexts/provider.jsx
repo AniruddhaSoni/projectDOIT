@@ -28,7 +28,7 @@ const initialData = {
     bpl: false,
     foodSecurity: false,
     migration: false,
-    migrationDetails: [""],
+    migrationDetails: [],
   },
 
   //StepEight
@@ -36,7 +36,7 @@ const initialData = {
     totalMinikits: "",
     fasalInsuranceAdvantage: false,
     dripEquipmentGrant: false,
-    krishakSathiYojana: false,
+    krishakSathiYojana: "",
     subsidyOnAgricultureMachinery: false,
     plantProtectionGrant: false,
     krishiVigyanScholarship: false,
@@ -65,6 +65,39 @@ const initialData = {
     scholar: "",
     inGovtJob: [],
     inOtherYojana: "",
+  },
+
+  // StepEleven
+  revenueDepartment: {
+    totalLand: [],
+    isIrrigatedLand: [],
+    irrigationSystem: [],
+    nominationLeft: [],
+    isKhatedariLand: [],
+    landDispute: [],
+    cmReliefFundPending: [],
+    specialDetails: "",
+  },
+
+  // StepTwelve
+  bankingService: {
+    familyAccount: false,
+    kccScheme: false,
+    mudraLoanScheme: false,
+    pmSurakshaInsuranceScheme: false,
+    pmJeevanJyotiInsuranceScheme: false,
+    atalPensionScheme: false,
+    specialDetails: "",
+  },
+
+  // StepThirteen
+  skillDevelopment: {
+    rscitMembers: [],
+    techMembers: [],
+    jobMembers: [],
+    selfEmployeed: false,
+    businessTrainingInterest: false,
+    traineeDetails: [],
   },
 };
 
@@ -108,7 +141,35 @@ const reducer = (state, action) => {
         ...state,
         educationDepartment: action.payload,
       };
+    case "handleStepEleven":
+      localStorage.setItem(
+        process.env.REACT_APP_LOCAL_STORAGE_KEY,
+        JSON.stringify({ ...state, revenueDepartment: action.payload })
+      );
+      return {
+        ...state,
+        revenueDepartment: action.payload,
+      };
 
+    case "handleStepTwelve":
+      localStorage.setItem(
+        process.env.REACT_APP_LOCAL_STORAGE_KEY,
+        JSON.stringify({ ...state, bankingService: action.payload })
+      );
+      return {
+        ...state,
+        bankingService: action.payload,
+      };
+
+    case "handleStepThirteen":
+      localStorage.setItem(
+        process.env.REACT_APP_LOCAL_STORAGE_KEY,
+        JSON.stringify({ ...state, skillDevelopment: action.payload })
+      );
+      return {
+        ...state,
+        skillDevelopment: action.payload,
+      };
     default:
       return state;
   }
