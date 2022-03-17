@@ -1,8 +1,10 @@
 import { Button, Col, Container, Form, Row, Stack } from "react-bootstrap";
 import { LocalContext } from "../Contexts/provider";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import SubmitModal from "./Modal";
 
 export default function StepThirteen() {
+  const [modalShow, setModalShow] = useState(false);
   const [state, dispatch] = useContext(LocalContext);
   const { skillDevelopment } = state;
   const {
@@ -297,7 +299,16 @@ export default function StepThirteen() {
             </Stack>
           </Row>
         </Stack>
+        <Button
+          size="lg"
+          className="w-100 my-4"
+          variant="success"
+          onClick={() => setModalShow(true)}
+        >
+          Submit
+        </Button>
       </Form>
+      <SubmitModal show={modalShow} onHide={() => setModalShow(false)} />
     </Container>
   );
 }
