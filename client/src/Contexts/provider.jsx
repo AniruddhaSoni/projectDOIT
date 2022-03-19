@@ -31,6 +31,20 @@ const initialData = {
     migrationDetails: [],
   },
 
+  // StepSeven
+
+  medicalDepartment: {
+    totalInJananiSurkshaScheme: "",
+    totalInFreeMedicine: "",
+    totalinCmChiranjeeviScheme: "",
+    totalOutCmChiranjeeviScheme: "",
+    totalAffectedByTuberculosis: "",
+    totalAffectedByRegularDotus: "",
+    totalDrugAddicts: "",
+    familyPlanning: "",
+    specialDetails: "",
+  },
+
   //StepEight
   agricultureDepartment: {
     totalMinikits: "",
@@ -113,6 +127,16 @@ const reducer = (state, action) => {
       return {
         ...state,
         familyDetail: action.payload,
+      };
+
+    case "handleStepSeven":
+      localStorage.setItem(
+        process.env.REACT_APP_LOCAL_STORAGE_KEY,
+        JSON.stringify({ ...state, medicalDepartment: action.payload })
+      );
+      return {
+        ...state,
+        medicalDepartment: action.payload,
       };
     case "handleStepEight":
       localStorage.setItem(

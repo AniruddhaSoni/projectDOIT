@@ -35,6 +35,20 @@ const userSchema = new mongoose.Schema({
         }]
     },
 
+    // Medical Department -- StepSeven
+
+    medicalDepartment: {
+        totalInJananiSurkshaScheme: typeString,
+        totalInFreeMedicine: typeString,
+        totalinCmChiranjeeviScheme: typeString,
+        totalOutCmChiranjeeviScheme: typeString,
+        totalAffectedByTuberculosis: typeString,
+        totalAffectedByRegularDotus: typeString,
+        totalDrugAddicts: typeString,
+        familyPlanning: typeString,
+        specialDetails: typeString,
+    },
+
     // Agriculture Department-- StepEight
 
     agricultureDepartment: {
