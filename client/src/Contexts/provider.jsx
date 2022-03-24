@@ -31,6 +31,37 @@ const initialData = {
     migrationDetails: [],
   },
 
+  //StepThree
+  developmentDepartment: {
+    manaregaJobsinDays: "",
+    isProfitTakerOfPradhanmantriAavasYojna: false,
+    hasJobCard: false,
+    hasRashanCard: false,
+    isProfitTakerOfotherAgricultureYojna: false,
+  },
+
+  //stepFour
+  rasadDepartment: {
+    isSelectedUnderNationalFoodSecrity: false,
+    reasonNotSelectedUnderNationalFoodSecrity: "",
+    isGettingRegularFood: false,
+    reasonNotGettingRegularFood: "",
+    isGettingTADSahariyaKit: false,
+  },
+  //stepFive
+  LadiesAndChildrenDepartment: {
+    noOfChildrenBelowSix: "",
+    childrenInAnganbadi: "",
+    noOfUnderNourished: "",
+    NameOfUnderNourishedChildren: "",
+    MTCAdmittedUnderNourishedChildren: "",
+    reasonNotAdmittedinMTC: "",
+    noOfChildrenGettingNourishFood: "",
+    noOfLadies: "",
+    noOfLadiesGettingFoodFromIndraGandhiYojna: "",
+    areLadiesUsingSanatary: false,
+  },
+
   // StepSeven
 
   medicalDepartment: {
@@ -128,15 +159,35 @@ const reducer = (state, action) => {
         ...state,
         familyDetail: action.payload,
       };
-
-    case "handleStepSeven":
+    case "handleStepThree":
       localStorage.setItem(
         process.env.REACT_APP_LOCAL_STORAGE_KEY,
-        JSON.stringify({ ...state, medicalDepartment: action.payload })
+        JSON.stringify({ ...state, developmentDepartment: action.payload })
       );
       return {
         ...state,
-        medicalDepartment: action.payload,
+        developmentDepartment: action.payload,
+      };
+    case "handleStepFour":
+      localStorage.setItem(
+        process.env.REACT_APP_LOCAL_STORAGE_KEY,
+        JSON.stringify({ ...state, rasadDepartment: action.payload })
+      );
+      return {
+        ...state,
+        rasadDepartment: action.payload,
+      };
+    case "handleStepFive":
+      localStorage.setItem(
+        process.env.REACT_APP_LOCAL_STORAGE_KEY,
+        JSON.stringify({
+          ...state,
+          LadiesAndChildrenDepartment: action.payload,
+        })
+      );
+      return {
+        ...state,
+        LadiesAndChildrenDepartment: action.payload,
       };
     case "handleStepEight":
       localStorage.setItem(

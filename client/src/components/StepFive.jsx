@@ -1,7 +1,38 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Container, Form, Row, Col, Stack } from "react-bootstrap";
+import { LocalContext } from "../Contexts/provider";
 
 export default function StepFive() {
+  const [state, dispatch] = useContext(LocalContext);
+  const { LadiesAndChildrenDepartment } = state;
+
+  const {
+    noOfChildrenBelowSix,
+    childrenInAnganbadi,
+    noOfUnderNourished,
+    NameOfUnderNourishedChildren,
+    MTCAdmittedUnderNourishedChildren,
+    reasonNotAdmittedinMTC,
+    noOfChildrenGettingNourishFood,
+    noOfLadies,
+    noOfLadiesGettingFoodFromIndraGandhiYojna,
+    areLadiesUsingSanatary,
+  } = LadiesAndChildrenDepartment;
+
+  const handleFieldChange = (e, index) => {
+    const { name, value, type } = e.target;
+    const values = { ...LadiesAndChildrenDepartment };
+
+    if (type === "radio") {
+      values[name] = value === "yes" ? true : false;
+    } else {
+      values[name] = value;
+    }
+    dispatch({
+      type: "handleStepFive",
+      payload: values,
+    });
+  };
   return (
     <Container>
       <h1>महिला एवं बाल विकास विभाग-</h1>
@@ -12,7 +43,12 @@ export default function StepFive() {
               <h4>1. 0 से 6 वर्ष तक के बच्चों की संख्या</h4>
             </Col>
             <Col>
-              <Form.Control placeholder="0 से 6 वर्ष तक के बच्चों की संख्या"></Form.Control>
+              <Form.Control
+                placeholder="0 से 6 वर्ष तक के बच्चों की संख्या"
+                onChange={handleFieldChange}
+                data-property="noOfChildrenBelowSix"
+                value={noOfChildrenBelowSix}
+              ></Form.Control>
             </Col>
           </Row>
           <Row>
@@ -20,7 +56,12 @@ export default function StepFive() {
               <h4>2. आंगनबाडी मेंपंजीकृत बच्चों की संख्या</h4>
             </Col>
             <Col>
-              <Form.Control placeholder="आंगनबाडी मेंपंजीकृत बच्चों की संख्या"></Form.Control>
+              <Form.Control
+                placeholder="आंगनबाडी मेंपंजीकृत बच्चों की संख्या"
+                onChange={handleFieldChange}
+                data-property="childrenInAnganbadi"
+                value={childrenInAnganbadi}
+              ></Form.Control>
             </Col>
           </Row>
           <Row>
@@ -28,7 +69,12 @@ export default function StepFive() {
               <h4>3. परिवार में अतिकुपोषित बच्चों की संख्या</h4>
             </Col>
             <Col>
-              <Form.Control placeholder="परिवार में अतिकुपोषित बच्चों की संख्या"></Form.Control>
+              <Form.Control
+                placeholder="परिवार में अतिकुपोषित बच्चों की संख्या"
+                onChange={handleFieldChange}
+                data-property="noOfUnderNourished"
+                value={noOfUnderNourished}
+              ></Form.Control>
             </Col>
           </Row>
           <Row>
@@ -36,7 +82,12 @@ export default function StepFive() {
               <h4>4. अतिकुपोषितबच्चों के नाम</h4>
             </Col>
             <Col>
-              <Form.Control placeholder="अतिकुपोषित बच्चों के नाम"></Form.Control>
+              <Form.Control
+                placeholder="अतिकुपोषित बच्चों के नाम"
+                onChange={handleFieldChange}
+                data-property="NameOfUnderNourishedChildren"
+                value={NameOfUnderNourishedChildren}
+              ></Form.Control>
             </Col>
           </Row>
           <Row>
@@ -45,9 +96,10 @@ export default function StepFive() {
             </Col>
             <Col>
               <Form.Control
-                placeholder="एमटीसी में भर्ती कराये अतिकुपोषित बच्चों का विवरण
-
-"
+                placeholder="एमटीसी में भर्ती कराये अतिकुपोषित बच्चों का विवरण"
+                onChange={handleFieldChange}
+                data-property="MTCAdmittedUnderNourishedChildren"
+                value={MTCAdmittedUnderNourishedChildren}
               ></Form.Control>
             </Col>
           </Row>
@@ -59,10 +111,10 @@ export default function StepFive() {
             </Col>
             <Col>
               <Form.Control
-                placeholder="अतिकुपोषित बच्चों को एमटीसी में भर्ती नहीं कराया है तो कारण
-
-
-"
+                placeholder="अतिकुपोषित बच्चों को एमटीसी में भर्ती नहीं कराया है तो कारण"
+                onChange={handleFieldChange}
+                data-property="reasonNotAdmittedinMTC"
+                value={reasonNotAdmittedinMTC}
               ></Form.Control>
             </Col>
           </Row>
@@ -72,10 +124,10 @@ export default function StepFive() {
             </Col>
             <Col>
               <Form.Control
-                placeholder="पोषाहार प्राप्त करने वाले बच्चों की संख्या 
-
-
-"
+                placeholder="पोषाहार प्राप्त करने वाले बच्चों की संख्या"
+                onChange={handleFieldChange}
+                data-property="noOfChildrenGettingNourishFood"
+                value={noOfChildrenGettingNourishFood}
               ></Form.Control>
             </Col>
           </Row>
@@ -84,7 +136,12 @@ export default function StepFive() {
               <h4>8. किशोरी एवं धात्री व ग्रभवती महिलाओं की संख्या</h4>
             </Col>
             <Col>
-              <Form.Control placeholder="किशोरी एवं धात्री व ग्रभवती महिलाओं की संख्या"></Form.Control>
+              <Form.Control
+                placeholder="किशोरी एवं धात्री व ग्रभवती महिलाओं की संख्या"
+                onChange={handleFieldChange}
+                data-property="noOfLadies"
+                value={noOfLadies}
+              ></Form.Control>
             </Col>
           </Row>
           <Row>
@@ -96,10 +153,10 @@ export default function StepFive() {
             </Col>
             <Col>
               <Form.Control
-                placeholder="इन्द्रागांधी मातृत्व पोषण योजना से लाभान्वित महिलाओं की संख्या
-
-
-"
+                placeholder="इन्द्रागांधी मातृत्व पोषण योजना से लाभान्वित महिलाओं की संख्या"
+                onChange={handleFieldChange}
+                data-property="noOfLadiesGettingFoodFromIndraGandhiYojna"
+                value={noOfLadiesGettingFoodFromIndraGandhiYojna}
               ></Form.Control>
             </Col>
           </Row>
@@ -111,9 +168,27 @@ export default function StepFive() {
               </h4>
             </Col>
             <Col>
-              <Stack direction="horizontal" gap={4}>
-                <Form.Check type="radio" id="radioYes" label="YES" />
-                <Form.Check type="radio" id="radioNO" label="NO" />
+              <Stack
+                direction="horizontal"
+                gap={4}
+                onChange={handleFieldChange}
+              >
+                <Form.Check
+                  type="radio"
+                  id="radioYes"
+                  label="YES"
+                  name="areLadiesUsingSanatary"
+                  value="yes"
+                  defaultChecked={areLadiesUsingSanatary ? true : false}
+                />
+                <Form.Check
+                  type="radio"
+                  id="radioYes"
+                  label="YES"
+                  name="areLadiesUsingSanatary"
+                  value="yes"
+                  defaultChecked={areLadiesUsingSanatary ? true : false}
+                />
               </Stack>
             </Col>
           </Row>
