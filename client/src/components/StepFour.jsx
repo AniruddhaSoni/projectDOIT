@@ -74,7 +74,7 @@ export default function StepFour() {
             <Col>
               <Form.Control
                 placeholder="यदि चयनित नहीं है तो चयनित नहीं होने का कारण"
-                data-property="reasonNotSelectedUnderNationalFoodSecrity"
+                name="reasonNotSelectedUnderNationalFoodSecrity"
                 onChange={handleFieldChange}
                 value={reasonNotSelectedUnderNationalFoodSecrity}
               ></Form.Control>
@@ -119,7 +119,7 @@ export default function StepFour() {
               <Form.Control
                 onChange={handleFieldChange}
                 placeholder="यदि नहीं तो कारण"
-                data-property="reasonNotGettingRegularFood"
+                name="reasonNotGettingRegularFood"
                 value={reasonNotGettingRegularFood}
               ></Form.Control>
             </Col>

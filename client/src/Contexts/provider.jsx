@@ -189,6 +189,15 @@ const reducer = (state, action) => {
         ...state,
         LadiesAndChildrenDepartment: action.payload,
       };
+    case "handleStepSeven":
+      localStorage.setItem(
+        process.env.REACT_APP_LOCAL_STORAGE_KEY,
+        JSON.stringify({ ...state, medicalDepartment: action.payload })
+      );
+      return {
+        ...state,
+        medicalDepartment: action.payload,
+      };
     case "handleStepEight":
       localStorage.setItem(
         process.env.REACT_APP_LOCAL_STORAGE_KEY,
