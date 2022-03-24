@@ -31,6 +31,37 @@ const initialData = {
     migrationDetails: [],
   },
 
+  //StepThree
+  developmentDepartment: {
+    manaregaJobsinDays: "",
+    isProfitTakerOfPradhanmantriAavasYojna: false,
+    hasJobCard: false,
+    hasRashanCard: false,
+    isProfitTakerOfotherAgricultureYojna: false,
+  },
+
+  //stepFour
+  rasadDepartment: {
+    isSelectedUnderNationalFoodSecrity: false,
+    reasonNotSelectedUnderNationalFoodSecrity: "",
+    isGettingRegularFood: false,
+    reasonNotGettingRegularFood: "",
+    isGettingTADSahariyaKit: false,
+  },
+  //stepFive
+  LadiesAndChildrenDepartment: {
+    noOfChildrenBelowSix: "",
+    childrenInAnganbadi: "",
+    noOfUnderNourished: "",
+    NameOfUnderNourishedChildren: "",
+    MTCAdmittedUnderNourishedChildren: "",
+    reasonNotAdmittedinMTC: "",
+    noOfChildrenGettingNourishFood: "",
+    noOfLadies: "",
+    noOfLadiesGettingFoodFromIndraGandhiYojna: "",
+    areLadiesUsingSanatary: false,
+  },
+
   //StepEight
   agricultureDepartment: {
     totalMinikits: "",
@@ -109,6 +140,36 @@ const reducer = (state, action) => {
       localStorage.setItem(
         process.env.REACT_APP_LOCAL_STORAGE_KEY,
         JSON.stringify({ ...state, familyDetail: action.payload })
+      );
+      return {
+        ...state,
+        familyDetail: action.payload,
+      };
+    case "handleStepThree":
+      localStorage.setItem(
+        process.env.REACT_APP_LOCAL_STORAGE_KEY,
+        JSON.stringify({ ...state, developmentDepartment: action.payload })
+      );
+      return {
+        ...state,
+        familyDetail: action.payload,
+      };
+    case "handleStepFour":
+      localStorage.setItem(
+        process.env.REACT_APP_LOCAL_STORAGE_KEY,
+        JSON.stringify({ ...state, rasadDepartment: action.payload })
+      );
+      return {
+        ...state,
+        familyDetail: action.payload,
+      };
+    case "handleStepFive":
+      localStorage.setItem(
+        process.env.REACT_APP_LOCAL_STORAGE_KEY,
+        JSON.stringify({
+          ...state,
+          LadiesAndChildrenDepartment: action.payload,
+        })
       );
       return {
         ...state,
