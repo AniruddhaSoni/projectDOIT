@@ -14,10 +14,9 @@ export default function StepThree() {
     isProfitTakerOfotherAgricultureYojna,
   } = developmentDepartment;
 
-  const handleFieldChange = (e, index) => {
+  const handleFieldChange = (e) => {
     const { name, value, type } = e.target;
     const values = { ...developmentDepartment };
-
     if (type === "radio") {
       values[name] = value === "yes" ? true : false;
     } else {
@@ -42,7 +41,7 @@ export default function StepThree() {
               <Form.Control
                 type="text"
                 onChange={handleFieldChange}
-                data-property="manaregaJobsinDays"
+                name="manaregaJobsinDays"
                 placeholder="परिवारको मनरेगा से कितने दिन रोजगार मिला"
                 value={manaregaJobsinDays}
               ></Form.Control>

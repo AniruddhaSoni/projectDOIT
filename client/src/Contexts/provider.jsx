@@ -152,7 +152,7 @@ const reducer = (state, action) => {
       );
       return {
         ...state,
-        familyDetail: action.payload,
+        developmentDepartment: action.payload,
       };
     case "handleStepFour":
       localStorage.setItem(
@@ -161,7 +161,7 @@ const reducer = (state, action) => {
       );
       return {
         ...state,
-        familyDetail: action.payload,
+        rasadDepartment: action.payload,
       };
     case "handleStepFive":
       localStorage.setItem(
@@ -173,7 +173,7 @@ const reducer = (state, action) => {
       );
       return {
         ...state,
-        familyDetail: action.payload,
+        LadiesAndChildrenDepartment: action.payload,
       };
     case "handleStepEight":
       localStorage.setItem(
