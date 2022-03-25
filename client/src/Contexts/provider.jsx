@@ -31,6 +31,17 @@ const initialData = {
     migrationDetails: [],
   },
 
+  // StepTwo
+  socialJusticeDepartment: {
+    pensionScheme: [],
+    sahayogScheme: [],
+    postMetricScheme: [],
+    cmSwarojgarScheme: [],
+    vidhvaPunrvivhaScheme: [],
+    deprivedMembers: [],
+    specialDetails: "",
+  },
+
   //StepThree
   developmentDepartment: {
     manaregaJobsinDays: "",
@@ -158,6 +169,15 @@ const reducer = (state, action) => {
       return {
         ...state,
         familyDetail: action.payload,
+      };
+    case "handleStepTwo":
+      localStorage.setItem(
+        process.env.REACT_APP_LOCAL_STORAGE_KEY,
+        JSON.stringify({ ...state, socialJusticeDepartment: action.payload })
+      );
+      return {
+        ...state,
+        socialJusticeDepartment: action.payload,
       };
     case "handleStepThree":
       localStorage.setItem(
