@@ -73,8 +73,19 @@ const initialData = {
     areLadiesUsingSanatary: false,
   },
 
-  // StepSeven
+  //stepSix
+  tribalDevelopementDepartment: {
+    childrenLiveInHostels: "",
+    studentsGettingScholarShips: "",
+    economicalHelpForBSTC: "",
+    studentsHavingBenifitOfFreeScooty: "",
+    childrenAdmittedInDayCare: "",
+    economicalHelpInAccidentDiseaseDeath: "",
+    coachingBenifitsToGettingAdmissionInIITPMTs: "",
+    noOfStudentsGettingAdmissionInCompetitiveExams: "",
+  },
 
+  // StepSeven
   medicalDepartment: {
     totalInJananiSurkshaScheme: "",
     totalInFreeMedicine: "",
@@ -208,6 +219,18 @@ const reducer = (state, action) => {
       return {
         ...state,
         LadiesAndChildrenDepartment: action.payload,
+      };
+    case "handleStepSix":
+      localStorage.setItem(
+        process.env.REACT_APP_LOCAL_STORAGE_KEY,
+        JSON.stringify({
+          ...state,
+          tribalDevelopementDepartment: action.payload,
+        })
+      );
+      return {
+        ...state,
+        tribalDevelopementDepartment: action.payload,
       };
     case "handleStepSeven":
       localStorage.setItem(
