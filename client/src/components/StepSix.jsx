@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Container, Form, Row, Col, Stack } from "react-bootstrap";
+import { Container, Form, Row, Col, Stack, Button } from "react-bootstrap";
 import { LocalContext } from "../Contexts/provider";
 
 export default function StepSix() {
@@ -17,19 +17,58 @@ export default function StepSix() {
     noOfStudentsGettingAdmissionInCompetitiveExams,
   } = tribalDevelopementDepartment;
 
-  const handleFieldChange = (e) => {
+  const handleFieldChange = (e, index) => {
     const { name, value, type } = e.target;
+    const dataAttri = e.target.getAttribute("data-property");
     const values = { ...tribalDevelopementDepartment };
 
     if (type === "radio") {
       values[name] = value === "yes" ? true : false;
-    } else {
+    } else if (
+      name === "childrenAdmittedInDayCare" ||
+      name === "noOfStudentsGettingAdmissionInCompetitiveExams"
+    ) {
       values[name] = value;
+    } else {
+      values[dataAttri][index][name] = value;
     }
     dispatch({
       type: "handleStepSix",
       payload: values,
     });
+  };
+
+  const handleAdd = (e) => {
+    const dataAttri = e.target.getAttribute("data-property");
+    const values = { ...tribalDevelopementDepartment };
+
+    if (
+      dataAttri === "childrenLiveInHostels" ||
+      dataAttri === "studentsGettingScholarShips" ||
+      dataAttri === "studentsHavingBenifitOfFreeScooty"
+    ) {
+      values[dataAttri].push({ memberName: "" });
+    } else {
+      values[dataAttri].push({ details: "" });
+    }
+    dispatch({
+      type: "handleStepSix",
+      payload: values,
+    });
+  };
+
+  const handleRemove = (e) => {
+    const dataAttri = e.target.getAttribute("data-property");
+    const values = { ...tribalDevelopementDepartment };
+    if (values[dataAttri].length > 0) {
+      values[dataAttri].pop();
+      dispatch({
+        type: "handleStepThirteen",
+        payload: values,
+      });
+    } else {
+      alert("nothing to remove");
+    }
   };
   return (
     <Container>
@@ -37,58 +76,148 @@ export default function StepSix() {
       <Form className="my-4">
         <Stack gap={3}>
           <Row>
-            <Col>
-              <h4>1. छात्रावास में रहने वाले बच्चों का विवरण</h4>
-            </Col>
-            <Col>
-              <Form.Control
-                placeholder="छात्रावास में रहने वाले बच्चों का विवरण"
-                name="childrenLiveInHostels"
-                value={childrenLiveInHostels}
-                onChange={(e) => handleFieldChange(e)}
-              ></Form.Control>
-            </Col>
+            <h4>1. छात्रावास में रहने वाले बच्चों का विवरण</h4>
+            {childrenLiveInHostels.length > 0 &&
+              childrenLiveInHostels.map((ele, index) => (
+                <Row key={index}>
+                  <Form.Control
+                    className="my-2 mx-2"
+                    placeholder="छात्र विवरण"
+                    name="memberName"
+                    value={ele.memberName}
+                    data-property="childrenLiveInHostels"
+                    onChange={(e) => handleFieldChange(e, index)}
+                  ></Form.Control>
+                </Row>
+              ))}
+            <Stack direction="horizontal" gap={4}>
+              <Button
+                onClick={handleAdd}
+                size="sm"
+                variant="dark"
+                className="my-4 w-25 py-2"
+                data-property="childrenLiveInHostels"
+              >
+                Add
+              </Button>
+              <Button
+                onClick={handleRemove}
+                size="sm"
+                variant="danger"
+                className="my-4 w-25 py-2"
+                data-property="childrenLiveInHostels"
+              >
+                Remove
+              </Button>
+            </Stack>
           </Row>
           <Row>
-            <Col>
-              <h4>2. छात्रवृति प्राप्त करने वाले छात्रों का विवरण</h4>
-            </Col>
-            <Col>
-              <Form.Control
-                placeholder="छात्रवृति प्राप्त करने वाले छात्रों का विवरण"
-                name="studentsGettingScholarShips"
-                value={studentsGettingScholarShips}
-                onChange={(e) => handleFieldChange(e)}
-              ></Form.Control>
-            </Col>
+            <h4>2. छात्रवृति प्राप्त करने वाले छात्रों का विवरण</h4>
+            {studentsGettingScholarShips.length > 0 &&
+              studentsGettingScholarShips.map((ele, index) => (
+                <Row key={index}>
+                  <Form.Control
+                    className="my-2 mx-2"
+                    placeholder="छात्र विवरण"
+                    name="memberName"
+                    value={ele.memberName}
+                    data-property="studentsGettingScholarShips"
+                    onChange={(e) => handleFieldChange(e, index)}
+                  ></Form.Control>
+                </Row>
+              ))}
+            <Stack direction="horizontal" gap={4}>
+              <Button
+                onClick={handleAdd}
+                size="sm"
+                variant="dark"
+                className="my-4 w-25 py-2"
+                data-property="studentsGettingScholarShips"
+              >
+                Add
+              </Button>
+              <Button
+                onClick={handleRemove}
+                size="sm"
+                variant="danger"
+                className="my-4 w-25 py-2"
+                data-property="studentsGettingScholarShips"
+              >
+                Remove
+              </Button>
+            </Stack>
           </Row>
           <Row>
-            <Col>
-              <h4>3. बी.एस. टी.सी. प्रशिक्षण हेतु आर्थिक सहायता का विवरण </h4>
-            </Col>
-            <Col>
-              <Form.Control
-                placeholder="बी.एस. टी.सी. प्रशिक्षण हेतु आर्थिक सहायता का विवरण"
-                name="economicalHelpForBSTC"
-                value={economicalHelpForBSTC}
-                onChange={(e) => handleFieldChange(e)}
-              ></Form.Control>
-            </Col>
+            <h4>3. बी.एस. टी.सी. प्रशिक्षण हेतु आर्थिक सहायता का विवरण </h4>
+            {economicalHelpForBSTC.length > 0 &&
+              economicalHelpForBSTC.map((ele, index) => (
+                <Row>
+                  <Form.Control
+                    className="my-2 mx-2"
+                    placeholder="विवरण"
+                    name="details"
+                    value={ele.details}
+                    data-property="economicalHelpForBSTC"
+                    onChange={(e) => handleFieldChange(e, index)}
+                  ></Form.Control>
+                </Row>
+              ))}
+            <Stack direction="horizontal" gap={4}>
+              <Button
+                onClick={handleAdd}
+                size="sm"
+                variant="dark"
+                className="my-4 w-25 py-2"
+                data-property="economicalHelpForBSTC"
+              >
+                Add
+              </Button>
+              <Button
+                onClick={handleRemove}
+                size="sm"
+                variant="danger"
+                className="my-4 w-25 py-2"
+                data-property="economicalHelpForBSTC"
+              >
+                Remove
+              </Button>
+            </Stack>
           </Row>
           <Row>
-            <Col>
-              <h4>
-                4. निःशुल्क स्कूटी से लाभान्वित होने वाले छात्राओं का विवरण
-              </h4>
-            </Col>
-            <Col>
-              <Form.Control
-                placeholder=" निःशुल्क स्कूटी से लाभान्वित होने वाले छात्राओं का विवरण"
-                name="studentsHavingBenifitOfFreeScooty"
-                value={studentsHavingBenifitOfFreeScooty}
-                onChange={(e) => handleFieldChange(e)}
-              ></Form.Control>
-            </Col>
+            <h4>4. निःशुल्क स्कूटी से लाभान्वित होने वाले छात्राओं का विवरण</h4>
+            {studentsHavingBenifitOfFreeScooty.length > 0 &&
+              studentsHavingBenifitOfFreeScooty.map((ele, index) => (
+                <Row key={index}>
+                  <Form.Control
+                    className="my-2 mx-2"
+                    placeholder="छात्र विवरण"
+                    name="memberName"
+                    value={ele.memberName}
+                    data-property="studentsHavingBenifitOfFreeScooty"
+                    onChange={(e) => handleFieldChange(e, index)}
+                  ></Form.Control>
+                </Row>
+              ))}
+            <Stack direction="horizontal" gap={4}>
+              <Button
+                onClick={handleAdd}
+                size="sm"
+                variant="dark"
+                className="my-4 w-25 py-2"
+                data-property="studentsHavingBenifitOfFreeScooty"
+              >
+                Add
+              </Button>
+              <Button
+                onClick={handleRemove}
+                size="sm"
+                variant="danger"
+                className="my-4 w-25 py-2"
+                data-property="studentsHavingBenifitOfFreeScooty"
+              >
+                Remove
+              </Button>
+            </Stack>
           </Row>
           <Row>
             <Col>
@@ -104,17 +233,40 @@ export default function StepSix() {
             </Col>
           </Row>
           <Row>
-            <Col>
-              <h4>6. दुर्घटना/ बीमारी/ मृत्यु पर प्राप्त आर्थिक सहायता</h4>
-            </Col>
-            <Col>
-              <Form.Control
-                placeholder=" दुर्घटना/ बीमारी/ मृत्यु पर प्राप्त आर्थिक सहायता"
-                name="economicalHelpInAccidentDiseaseDeath"
-                value={economicalHelpInAccidentDiseaseDeath}
-                onChange={(e) => handleFieldChange(e)}
-              ></Form.Control>
-            </Col>
+            <h4>6. दुर्घटना/ बीमारी/ मृत्यु पर प्राप्त आर्थिक सहायता</h4>
+            {economicalHelpInAccidentDiseaseDeath.length > 0 &&
+              economicalHelpInAccidentDiseaseDeath.map((ele, index) => (
+                <Row>
+                  <Form.Control
+                    className="my-2 mx-2"
+                    placeholder="विवरण"
+                    name="details"
+                    value={ele.details}
+                    data-property="economicalHelpInAccidentDiseaseDeath"
+                    onChange={(e) => handleFieldChange(e, index)}
+                  ></Form.Control>
+                </Row>
+              ))}
+            <Stack direction="horizontal" gap={4}>
+              <Button
+                onClick={handleAdd}
+                size="sm"
+                variant="dark"
+                className="my-4 w-25 py-2"
+                data-property="economicalHelpInAccidentDiseaseDeath"
+              >
+                Add
+              </Button>
+              <Button
+                onClick={handleRemove}
+                size="sm"
+                variant="danger"
+                className="my-4 w-25 py-2"
+                data-property="economicalHelpInAccidentDiseaseDeath"
+              >
+                Remove
+              </Button>
+            </Stack>
           </Row>
           <Row>
             <Col>
@@ -123,12 +275,32 @@ export default function StepSix() {
               </h4>
             </Col>
             <Col>
-              <Form.Control
-                placeholder="पी.एम.टी/पी.ई.टी/ आई.आई.टी. में प्रवेश हेतु कॉचिंग की सुविधा"
-                name="coachingBenifitsToGettingAdmissionInIITPMTs"
-                value={coachingBenifitsToGettingAdmissionInIITPMTs}
-                onChange={(e) => handleFieldChange(e)}
-              ></Form.Control>
+              <Stack
+                direction="horizontal"
+                gap={4}
+                onChange={handleFieldChange}
+              >
+                <Form.Check
+                  name="coachingBenifitsToGettingAdmissionInIITPMTs"
+                  value="yes"
+                  type="radio"
+                  id="radioYes"
+                  label="YES"
+                  defaultChecked={
+                    coachingBenifitsToGettingAdmissionInIITPMTs ? true : false
+                  }
+                />
+                <Form.Check
+                  name="coachingBenifitsToGettingAdmissionInIITPMTs"
+                  defaultChecked={
+                    !coachingBenifitsToGettingAdmissionInIITPMTs ? true : false
+                  }
+                  value="no"
+                  type="radio"
+                  id="radioNO"
+                  label="NO"
+                />
+              </Stack>
             </Col>
           </Row>
           <Row>

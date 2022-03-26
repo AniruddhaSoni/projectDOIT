@@ -75,13 +75,13 @@ const initialData = {
 
   //stepSix
   tribalDevelopementDepartment: {
-    childrenLiveInHostels: "",
-    studentsGettingScholarShips: "",
-    economicalHelpForBSTC: "",
-    studentsHavingBenifitOfFreeScooty: "",
+    childrenLiveInHostels: [],
+    studentsGettingScholarShips: [],
+    economicalHelpForBSTC: [],
+    studentsHavingBenifitOfFreeScooty: [],
     childrenAdmittedInDayCare: "",
-    economicalHelpInAccidentDiseaseDeath: "",
-    coachingBenifitsToGettingAdmissionInIITPMTs: "",
+    economicalHelpInAccidentDiseaseDeath: [],
+    coachingBenifitsToGettingAdmissionInIITPMTs: false,
     noOfStudentsGettingAdmissionInCompetitiveExams: "",
   },
 

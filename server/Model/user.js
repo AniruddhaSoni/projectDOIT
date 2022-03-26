@@ -87,6 +87,22 @@ const userSchema = new mongoose.Schema({
         areLadiesUsingSanatary: typeBoolean,
     },
 
+    // tribalDevelopementDepartment -- Step Six
+
+    tribalDevelopementDepartment: {
+        childrenLiveInHostels: [typeOnlyMember],
+        studentsGettingScholarShips: [typeOnlyMember],
+        economicalHelpForBSTC: [{
+            details: typeString
+        }],
+        studentsHavingBenifitOfFreeScooty: [typeOnlyMember],
+        childrenAdmittedInDayCare: typeString,
+        economicalHelpInAccidentDiseaseDeath: [{
+            details: typeString
+        }],
+        coachingBenifitsToGettingAdmissionInIITPMTs: typeBoolean,
+        noOfStudentsGettingAdmissionInCompetitiveExams: typeString,
+    },
 
     // Medical Department -- StepSeven
 
