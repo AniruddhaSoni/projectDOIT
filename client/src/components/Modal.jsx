@@ -1,6 +1,40 @@
 import { Modal, Button } from "react-bootstrap";
+import { LocalContext } from "../Contexts/provider";
+import { useContext } from "react";
+import { Buffer } from "buffer";
 
 export default function SubmitModal(props) {
+  const [state] = useContext(LocalContext);
+
+  const handleFormSubmission = async () => {
+    //scroll to top
+    window.scrollTo(0, 0);
+    const buff = new Buffer(JSON.stringify(state));
+    const base64Data = buff.toString("base64");
+
+    const response = await fetch("http://localhost:5000/storeInfo", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ data: base64Data }),
+    });
+    const jsonResponse = await response.json();
+
+    const { status, message } = jsonResponse;
+    if (status === "ok") {
+      alert(message);
+
+      // Clear local stoarge
+      localStorage.clear();
+      // refresh the page
+      window.location.reload();
+
+      return;
+    }
+    alert(message);
+  };
+
   return (
     <Modal
       {...props}
@@ -21,7 +55,9 @@ export default function SubmitModal(props) {
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>Close</Button>
-        <Button variant="success">Submit</Button>
+        <Button onClick={handleFormSubmission} variant="success">
+          Submit
+        </Button>
       </Modal.Footer>
     </Modal>
   );

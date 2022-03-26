@@ -16,6 +16,7 @@ mongoose.connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology
 app.use(cors());
 app.use(bodyParser.json());
 
+
 app.use('/storeInfo', storeInfo);
 
 

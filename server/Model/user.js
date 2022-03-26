@@ -7,6 +7,10 @@ const typeBoolean = {
     type: Boolean
 }
 
+const typeOnlyMember = {
+    memberName: typeString
+}
+
 const userSchema = new mongoose.Schema({
 
     //family Detail -- StepOne
@@ -30,10 +34,59 @@ const userSchema = new mongoose.Schema({
         bpl: typeBoolean,
         foodSecurity: typeBoolean,
         migration: typeBoolean,
-        migrationDetails: [{
-            memberName: typeString
-        }]
+        migrationDetails: [typeOnlyMember]
     },
+
+    //Social Justice Department -- StepTwo
+
+    socialJusticeDepartment: {
+        pensionScheme: [typeOnlyMember],
+        sahayogScheme: [typeOnlyMember],
+        postMetricScheme: [typeOnlyMember],
+        cmSwarojgarScheme: [typeOnlyMember],
+        vidhvaPunrvivhaScheme: [typeOnlyMember],
+        deprivedMembers: [{
+            memberName: typeString,
+            schemeName: typeString
+        }],
+        specialDetails: typeString,
+    },
+
+    // development Department -- StepThree
+
+    developmentDepartment: {
+        manaregaJobsinDays: typeString,
+        isProfitTakerOfPradhanmantriAavasYojna: typeBoolean,
+        hasJobCard: typeBoolean,
+        hasRashanCard: typeBoolean,
+        isProfitTakerOfotherAgricultureYojna: typeBoolean,
+    },
+
+    // Rasad Department -- StepFour
+
+    rasadDepartment: {
+        isSelectedUnderNationalFoodSecrity: typeBoolean,
+        reasonNotSelectedUnderNationalFoodSecrity: typeString,
+        isGettingRegularFood: typeBoolean,
+        reasonNotGettingRegularFood: typeString,
+        isGettingTADSahariyaKit: typeBoolean,
+    },
+
+    // Ladies and Children Departemnt -- StepFive
+
+    LadiesAndChildrenDepartment: {
+        noOfChildrenBelowSix: typeString,
+        childrenInAnganbadi: typeString,
+        noOfUnderNourished: typeString,
+        NameOfUnderNourishedChildren: typeString,
+        MTCAdmittedUnderNourishedChildren: typeString,
+        reasonNotAdmittedinMTC: typeString,
+        noOfChildrenGettingNourishFood: typeString,
+        noOfLadies: typeString,
+        noOfLadiesGettingFoodFromIndraGandhiYojna: typeString,
+        areLadiesUsingSanatary: typeBoolean,
+    },
+
 
     // Medical Department -- StepSeven
 
@@ -153,4 +206,5 @@ const userSchema = new mongoose.Schema({
 
 })
 
-const userModel = mongoose.model("user", userSchema)
+const userModel = mongoose.model("user", userSchema);
+module.exports = userModel;
